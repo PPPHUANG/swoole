@@ -4,6 +4,8 @@ namespace Family;
 use Family\Core\Config;
 use Family\Core\Route;
 use Family\Core\Log;
+use Famil\Coroutine\Context;
+use Famil\Coroutine\Coroutine;
 use Swoole;
 
 class Family
@@ -47,6 +49,18 @@ class Family
             ]);
         $http->on('request', function($request, $response){
             try {
+                //初始化根协程ID
+                $coId = Coroutine::setBaseId();
+                //初始化上下文
+                $context = new Context($request, $response);
+                //存放容器pool
+                Pool\Context::set($context);
+                //协程退出，自动清空
+                defer(function () use ($coId) {
+                    //清空当前pool的上下文，释放资源
+                    Pool\Context::clear($coId);
+                });
+
                 //自动路由
                 $result = Route::dispatch($request->server['path_info']);
                 $response->end($result);
