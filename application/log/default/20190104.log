@@ -1,0 +1,7 @@
+2019-01-04 10:26:25 | EMERGENCY | 25630 | 5c2ec440b875c | 1546568785.343 | Class 'controller\favicon.ico' not found
+2019-01-04 10:26:50 | EMERGENCY | 25763 | 5c2ec4640e2d4 | 1546568810.597 | Class 'controller\favicon.ico' not found
+2019-01-04 10:27:33 | EMERGENCY | 25763 | 5c2ec4640e2d4 | 1546568853.684 | Class 'controller\favicon.ico' not found
+2019-01-04 10:28:35 | EMERGENCY | 26167 | 5c2ec4cd618e7 | 1546568915.176 | Call to undefined method controller\Index::tong()
+2019-01-04 10:29:32 | EMERGENCY | 26363 | 5c2ec5063a709 | 1546568972.489 | Class 'controller\favicon.ico' not found
+2019-01-04 10:29:37 | EMERGENCY | 26363 | 5c2ec5063a709 | 1546568977.597 | Class 'controller\favicon.ico' not found
+2019-01-04 10:46:27 | EMERGENCY | 29838 | 5c2ec8fcd968e | 1546569987.987 | Class 'controller\favicon.ico' not found
