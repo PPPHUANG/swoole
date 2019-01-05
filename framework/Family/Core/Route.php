@@ -5,9 +5,6 @@ class Route
 {
     public static function dispatch($path)
     {
-        if ($path == '/favicon.ico') {
-           return '';
-        }
         //默认访问Controller/index.php的index方法
         if (empty($path) || '/' == $path) {
             $controller = 'Index';

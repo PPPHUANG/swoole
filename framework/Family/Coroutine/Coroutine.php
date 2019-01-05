@@ -37,7 +37,7 @@ class Coroutine
      * @return int|mixed|null
      * @desc 获取当前协程根协程ID
      */
-    public static function getPid($id = null, $cur =1)
+    public static function getPid($id = null, $cur = 1)
     {
         if ($id === null) {
             $id = self::getId();

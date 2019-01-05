@@ -44,11 +44,39 @@ class Family
 
         //通过配置获取IP、端口等
         $http = new Swoole\Http\Server(Config::get('host'), Config::get('port'));
+
         $http->set([
                 "worker_num" => Config::get('worker_num'),
             ]);
+        
+        $http->on('workerStart', function(\swoole_http_server $serv, int $worker_id) {
+            if (function_exists('opcache_reset')) {
+                //清除opcache缓存，swoole模式下其实可以关闭opcache
+                \opcache_reset();
+            }
+            try {
+                $mysqlConfig = Config::get('mysql');
+                if (!empty($mysqlConfig)) {
+                    //配置了MySQL，初始化MySQL连接池
+                    Pool\Mysql::getInstance($mysqlConfig);
+                }
+            } catch (\Exception $e) {
+                //初始化异常，关闭服务
+                \print_r($e);
+                $serv->shutdown();
+            } catch (\Throwable $th) {
+                \print_r($th);
+                $serv->shutdown();
+            }
+        });
+
         $http->on('request', function($request, $response){
             try {
+                if ($request->server['path_info'] == '/favicon.ico') {
+                    $response->end('');
+                    return;
+                }
+
                 //初始化根协程ID
                 $coId = Coroutine::setBaseId();
                 //初始化上下文
