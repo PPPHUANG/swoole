@@ -18,7 +18,7 @@ class Context
      */
     private $map = [];
 
-    public function __contruct(
+    public function __construct(
         \swoole_http_request $request,
         \swoole_http_response $response
     ) {
@@ -29,14 +29,14 @@ class Context
     /**
      * @return \swoole_http_request
      */
-    public function gerRequest() {
+    public function getRequest() {
         return $this->request;
     }
 
     /**
      * @return \swoole_http_response
      */
-    public function gerResponse() {
+    public function getResponse() {
         return $this->response;
     }
 

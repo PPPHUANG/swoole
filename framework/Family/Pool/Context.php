@@ -23,7 +23,7 @@ class Context
     {
         $id = Coroutine::getPid();
         if (isset(self::$pool[$id])) {
-            return self::$poll[$id];
+            return self::$pool[$id];
         }
         return null;
     }

@@ -40,7 +40,7 @@ class Coroutine
     public static function getPid($id = null, $cur =1)
     {
         if ($id === null) {
-            $id = self::getId;
+            $id = self::getId();
         }
         if (isset(self::$idMaps[$id])) {
             return self::$idMaps[$id];
@@ -56,7 +56,7 @@ class Coroutine
     public static function checkBaseCo()
     {
         $id = SwCo::getuid();
-        if (!empty(self::$idMaps[$id])) {
+        if (empty(self::$idMaps[$id])) {
             return false;
         }
 
