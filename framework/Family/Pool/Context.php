@@ -36,6 +36,7 @@ class Context
         $id = Coroutine::getPid();
         if (isset(self::$pool[$id])) {
             unset(self::$pool[$id]);
+            Coroutine::clear($id);
         }
     }
 
