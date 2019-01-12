@@ -22,7 +22,7 @@ class Mysql
             if (empty($config)) {
                 throw new \Exception('mysql config empty');
             }
-            slef::$instance = new static($config);
+            self::$instance = new static($config);
         }
         return self::$instance;
     }

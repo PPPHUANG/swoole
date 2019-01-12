@@ -2,7 +2,7 @@
 namespace controller;
 
 use Family\MVC\Controller;
-
+use service\User as UserService;
 class Index extends Controller
 {
     public function index()

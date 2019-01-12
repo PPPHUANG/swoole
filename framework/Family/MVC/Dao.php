@@ -151,11 +151,12 @@ class Dao
     public function add(array $array)
     {
         $strFields = '`' .\implode('`,`', \array_keys($array)) . '`';
-        $strValues = '`' .\implode('`,`', \array_values($array)) . "'";
+        $strValues = '"' .\implode('","', \array_values($array)) . '"';
         $query = "INSERT INTO {$this->getLibName()} ({$strFields}) VALUES ({$strValues})";
         if (!empty($onDuplicate)) {
             $query .= 'ON DUPLICATE KEY UPDATE ' . $onDuplicate;
         }
+        \var_dump($query);
         $result = $this->db->query($query);
         if (!empty($result['insert_id'])) {
             return $result['insert_id'];

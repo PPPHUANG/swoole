@@ -105,7 +105,7 @@ class Mysql
        $result = $db->$name($sql);
        Log::info($sql);
        if (false === $result) {
-           Log::warning('mysql query false'. [$sql]);
+           Log::warning('mysql query false'. $sql);
            if (!$db->connected) {
                $db = $this->reconnect($res['type'], $res['index']);
                Log::info('mysql reconnect', $res);
