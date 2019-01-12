@@ -1,0 +1,27 @@
+{
+    "name": "family",
+    "description": "family framework",
+    "keywords": [
+      "swoole",
+      "mvc",
+      "coroutine"
+    ],
+    "authors": [
+      {
+        "name": "ppphuang",
+        "email": "huangpengr@gmail.com"
+      }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Family\\": "framework/Family"
+      }
+    },
+    "require": {
+      "php": ">=7.0",
+      "nikic/fast-route": "*",
+      "easyswoole/http": "^1.0",
+      "ext-swoole": ">=4.2.9",
+      "ext-seaslog": ">=1.9.0"
+    }
+  }

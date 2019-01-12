@@ -1,6 +1,9 @@
 <?php
 namespace Family\Coroutine;
 
+use EasySwoole\Http\Request;
+use EasySwoole\Http\Response;
+
 class Context
 {
     /**
@@ -22,8 +25,8 @@ class Context
         \swoole_http_request $request,
         \swoole_http_response $response
     ) {
-        $this->request = $request;
-        $this->response = $response;
+        $this->request = new Request($request);
+        $this->response = new Response($response);
     }
 
     /**

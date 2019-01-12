@@ -109,16 +109,12 @@ class Family
 
     final public static function autoLoader($class) 
     {
-        //定义rootPath
-        $rootPath = \dirname(\dirname(__DIR__));
-
         //把类转为目录,eg \a\b\c => /a/b/c.php
         $classPath = \str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
 
         //约定框架类都在framework目录下，业务类都在application下
         $findPath = [
-            $rootPath . DIRECTORY_SEPARATOR . 'framework' . DIRECTORY_SEPARATOR,
-            $rootPath . DIRECTORY_SEPARATOR . 'application' . DIRECTORY_SEPARATOR
+            self::$rootPath . DIRECTORY_SEPARATOR . 'application' . DIRECTORY_SEPARATOR
         ];
 
         //遍历目录，查找文件

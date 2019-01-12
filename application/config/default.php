@@ -16,6 +16,17 @@ return[
             'timeout' => 0.5,                   //数据库连接超时时间
             'charset' => 'utf8mb4',             //默认字符集
             'strict_type' => true               //true 自动把数字转为int类型
-        ]
-    ]
+            ]
+        ],
+    'router' => function (FastRoute\RouteCollector $r) {
+        $r->addRoute('GET', '/users', ['controller\Index', 'list']);
+        $r->addRoute('GET', '/user/{uid:\d+}', 'controller\Index@user');
+        $r->get('/add', ['controller\Index', 'add']);
+        $r->get('/test', function () {
+            return 'i am test router';
+        });
+        $r->post('/post', function () {
+            return 'must post method';
+        });
+    }
 ];

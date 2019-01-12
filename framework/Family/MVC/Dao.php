@@ -156,7 +156,6 @@ class Dao
         if (!empty($onDuplicate)) {
             $query .= 'ON DUPLICATE KEY UPDATE ' . $onDuplicate;
         }
-        \var_dump($query);
         $result = $this->db->query($query);
         if (!empty($result['insert_id'])) {
             return $result['insert_id'];
